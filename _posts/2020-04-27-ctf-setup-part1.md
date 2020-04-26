@@ -5,6 +5,10 @@ date:   2020-04-27 10:00:00 +0300
 categories: smartrhino backstage
 ---
 
+<p align="center">
+    <img src="/img/2020-04-27/ctf-setup-part1/main.png" width="500">
+</p>
+
 Специально для паблика [SMARTRHINO](https://vk.com/smartrhino).
 
 ## 0000. Может, CTF устроим?
