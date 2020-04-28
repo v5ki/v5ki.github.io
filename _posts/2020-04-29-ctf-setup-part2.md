@@ -188,7 +188,7 @@ mail_tester initiated a confirmation email resend
 Первое, что необходимо сделать - сгенерировать секретный ключ, о чём нам любезно сообщают разработчики платформы.  
 Выполняем данный код из папки CTFd.
 ```bash
-python -c "import os; f=open('.ctfd_secret_key', 'a+'); f.write(os.urandom(64));
+python -c "import os; f=open('.ctfd_secret_key', 'a+'); f.write(os.urandom(64));"
 ```
 
 А вот настройку reverse proxy они оставили в качестве упражнения..
