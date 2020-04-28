@@ -158,7 +158,7 @@ mail_tester initiated a confirmation email resend
 Ночью решил снова запустить тестовый скрипт, и тут понеслась..
 
 <p align="center">
-    <img src="img/2020-04-29/ctf-setup-part2/smtp_test.png" width="500">
+    <img src="/img/2020-04-29/ctf-setup-part2/smtp_test.png" width="500">
 </p>
 
 СПАМ!? Чего?! А вы там не обурели!?  
@@ -171,14 +171,14 @@ mail_tester initiated a confirmation email resend
 В конечном итоге воспользовались корпоративной почтой и всё пошло-поехало.
 
 <p align="center">
-    <img src="img/2020-04-29/ctf-setup-part2/received_mail.png" width="500">
+    <img src="/img/2020-04-29/ctf-setup-part2/received_mail.png" width="500">
 </p>
 
 ## 0007. Так, а что с Advanced?
 Политика разработчиков CTFd проста и гениальна до невозможности, ну Вы поняли)
 
 <p align="center">
-    <img src="img/2020-04-29/ctf-setup-part2/just-do-it.jpg" width="500">
+    <img src="/img/2020-04-29/ctf-setup-part2/just-do-it.jpg" width="500">
 </p>
 
 Сразу опишу проблемы, с которыми столкнулся:
