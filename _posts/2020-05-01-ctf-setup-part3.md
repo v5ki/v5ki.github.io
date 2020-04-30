@@ -330,8 +330,72 @@ class TaskDeployers(Users):
 </p>
 
 Для начала добавим ограничение на доступные страницы, редактируем файл `CTFd/CTFd/themes/admin/templates/base.html`.  
-Прокручиваем до 48 строки и вставляем проверку типа пользователя:
+Прокручиваем до 48 строки и вставляем проверку типа пользователя `{% if type == 'admin' %}`:
+```html
+{% if type == 'admin' %}
+    <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Pages</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ url_for('admin.pages_listing') }}">All Pages</a>
+            <a class="dropdown-item" href="{{ url_for('admin.pages_new') }}">New Page</a>
+        </div>
+    </li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.users_listing') }}">Users</a></li>
+    {% if get_config('user_mode') == 'teams' %}
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.teams_listing') }}">Teams</a></li>
+    {% endif %}
+{% endif %}
 
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.scoreboard_listing') }}">Scoreboard</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.challenges_listing') }}">Challenges</a></li>
+    <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+        aria-haspopup="true" aria-expanded="true">Submissions</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ url_for('admin.submissions_listing') }}">All Submissions</a>
+            <a class="dropdown-item" href="{{ url_for('admin.submissions_listing', submission_type='correct') }}">Correct Submissions</a>
+            <a class="dropdown-item" href="{{ url_for('admin.submissions_listing', submission_type='incorrect') }}">Wrong Submissions</a>
+        </div>
+    </li>
+{% if type == 'admin' %}
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.config') }}">Config</a></li>
+{% endif %}
+```
+Тем самым мы отстранили деплоеров от доступа к пользовательским данным и панели управления бордой.
+
+Даём доступ (частичный) к админской панели - `CTFd/CTFd/themes/core/templates/base.html`, строка 85.
+Добавляем проверку `or type == 'task_deployer'`:
+```html
+{% if type == 'admin' or type == 'task_deployer' %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('admin.view') }}">
+            <span class="d-block" data-toggle="tooltip" data-placement="bottom" title="Admin Panel">
+                <i class="fas fa-wrench d-none d-md-block d-lg-none"></i>
+            </span>
+            <span class="d-sm-block d-md-none d-lg-block">
+                <i class="fas fa-wrench pr-1"></i>Admin Panel
+            </span>
+        </a>
+    </li>
+{% endif %}
+```
+
+Данных пользователей может создать только админ, поэтому не забываем добавить опцию __TaskDeployer__ в соответствующие формы.  
+Изменения коснутся двух файлов - `CTFd/CTFd/themes/admin/templates/modals/users/create.html` и `CTFd/CTFd/themes/admin/templates/modals/users/edit.html`.
+В обоих файлах откатываемся на 45 строку и добавляем следующее:
+```html
+<option value="task_deployer"{% if user is defined and user.type == 'task_deployer' %} selected{% endif %}>
+    Task Deployer
+</option>
+```
+
+И наконец-то последняя правка - добавляем `badge` для пользователей типа __TaskDeployer__.  
+Редактировать придётся тоже два файла - `CTFd/CTFd/themes/admin/templates/users/user.html` (62 строка), `CTFd/CTFd/themes/admin/templates/users/users.html` (114 строка):
+```html
+{% if user.type == 'task_deployer' %}
+    <span class="badge badge-primary">task deployer</span>
+{% endif %}
+```
 
 Как обычно перезагружаем сервер и контейнер, после чего можно взглянуть на результат.
 <p align="center">
