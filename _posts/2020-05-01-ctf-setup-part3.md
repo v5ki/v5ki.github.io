@@ -116,129 +116,210 @@ class TaskDeployers(Users):
 Правок довольно много, поэтому оставлю их под спойлером, вроде ничего не забыл.
 <details>
     <summary>Правки</summary>
-    
-- `models/__init__.py`:
-    - (Line 374) add 'TaskDeployers' class
-
-- `utils/user/__init__.py`:
-    - (Line 38) add 'is_task_deployer' func
-
-- `decorators/__init__.py`:
-    - (Line 22) add assert 'is_task_deployer' in 'during_ctf_time_only_wrapper' func
-    - (Line 64) add assert 'is_task_deployer' in '_require_verified_emails' func
-    - (Line 120) add decorator 'admins_or_task_deployers_only'
-
-- `admin/__init__.py`:
-    - (Line 37) import func 'is_task_deployer'
-    - (Line 53) add assert 'is_task_deployer' in 'view' func
-
-- `admin/challenges.py`:
-    - (Line 11) import decorator 'admins_or_task_deployers_only'
-    - (Line 16) change decorator to 'admins_or_task_deployers_only' for 'challenges_listing' func
-    - (Line 24) change decorator to 'admins_or_task_deployers_only' for 'challenges_detail' func
-    - (Line 63) change decorator to 'admins_or_task_deployers_only' for 'challenges_new' func
-
-- `admin/notifications.py`:
-    - (Line 5) import decorator 'admins_or_task_deployers_only'
-    - (Line 10) change decorator to 'admins_or_task_deployers_only' for 'notifications' func
-
-- `admin/scoreboard.py`:
-    - (Line 5) import decorator 'admins_or_task_deployers_only'
-    - (Line 10) change decorator to 'admins_or_task_deployers_only' for 'scoreboard_listing' func
-
-- `admin/statistics.py`:
-    - (Line 5) import decorator 'admins_or_task_deployers_only'
-    - (Line 12) change decorator to 'admins_or_task_deployers_only' for 'statistics' func
-
-- `admin/submissions.py`:
-    - (Line 5) import decorator 'admins_or_task_deployers_only'
-    - (Line 12) change decorator to 'admins_or_task_deployers_only' for 'submissions_listing' func
-
-- `api/v1/challenges.py`:
-    - (Line 24) import decorator 'admins_or_task_deployers_only'
-    - (Line 34) import func 'is_task_deployer'
-    - (Line 68) add assert 'is_task_deployer' in 'get' func
-    - (Line 121) change decorator to 'admins_or_task_deployers_only' for 'post' func
-    - (Line 134) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 156) add assert 'is_task_deployer' in 'get' func
-    - (Line 183) add assert 'is_task_deployer' in 'get' func
-    - (Line 215) add assert 'is_task_deployer' in 'get' func
-    - (Line 263) add assert 'is_task_deployer' in 'get' func
-    - (Line 279) change decorator to 'admins_or_task_deployers_only' for 'patch' func
-    - (Line 288) change decorator to 'admins_or_task_deployers_only' for 'delete' func
-    - (Line 313) add assert 'is_task_deployer' in 'post' func
-    - (Line 424) add assert 'is_task_deployer' in 'post' func
-    - (Line 442) add assert 'is_task_deployer' in 'post' func
-    - (Line 511) add assert 'is_task_deployer' in 'get' func
-    - (Line 530) add assert 'is_task_deployer' in 'get' func
-    - (Line 551) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 568) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 585) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 601) change decorator to 'admins_or_task_deployers_only' for 'get' func
-
-- `api/v1/files.py`:
-    - (Line 7) import decorator 'admins_or_task_deployers_only'
-    - (Line 15) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 28) change decorator to 'admins_or_task_deployers_only' for 'post' func
-    - (Line 52) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 64) change decorator to 'admins_or_task_deployers_only' for 'delete' func
-
-- `api/v1/flags.py`:
-    - (Line 7) import decorator 'admins_or_task_deployers_only'
-    - (Line 15) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 26) change decorator to 'admins_or_task_deployers_only' for 'post' func
-    - (Line 48) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 68) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 82) change decorator to 'admins_or_task_deployers_only' for 'delete' func
-    - (Line 93) change decorator to 'admins_or_task_deployers_only' for 'patch' func
-
-- `api/v1/hints.py`:
-    - (Line 6) import decorator 'admins_or_task_deployers_only'
-    - (Line 7) import func 'is_task_deployer'
-    - (Line 15) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 26) change decorator to 'admins_or_task_deployers_only' for 'post' func
-    - (Line 60) add assert 'is_task_deployer' in 'get' func
-    - (Line 72) change decorator to 'admins_or_task_deployers_only' for 'patch' func
-    - (Line 91) change decorator to 'admins_or_task_deployers_only' for 'delete' func
-
-- `api/v1/notifications.py`:
-    - (Line 6) import decorator 'admins_or_task_deployers_only'
-    - (Line 24) change decorator to 'admins_or_task_deployers_only' for 'post' func
-    - (Line 63) change decorator to 'admins_or_task_deployers_only' for 'delete' func
-
-- `api/v1/submissions.py`:
-    - (Line 7) import decorator 'admins_or_task_deployers_only'
-    - (Line 17) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 34) change decorator to 'admins_or_task_deployers_only' for 'post' func
-    - (Line 59) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 71) change decorator to 'admins_or_task_deployers_only' for 'delete' func
-
-- `api/v1/tags.py`:
-    - (Line 6) import decorator 'admins_or_task_deployers_only'
-    - (Line 14) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 27) change decorator to 'admins_or_task_deployers_only' for 'post' func
-    - (Line 49) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 61) change decorator to 'admins_or_task_deployers_only' for 'patch' func
-    - (Line 79) change decorator to 'admins_or_task_deployers_only' for 'delete' func
-
-- `api/v1/tokens.py`:
-    - (Line 10) import func 'is_task_deployer'
-    - (Line 58) add assert 'is_task_deployer' in 'get' func
-    - (Line 76) add assert 'is_task_deployer' in 'delete' func
-
-- `api/v1/unlocks.py`:
-    - (Line 10) import decorator 'admins_or_task_deployers_only'
-    - (Line 23) change decorator to 'admins_or_task_deployers_only' for 'get' func
-
-- `api/v1/statistics/challenges.py`:
-    - (Line 7) import decorator 'admins_or_task_deployers_only'
-    - (Line 14) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 32) change decorator to 'admins_or_task_deployers_only' for 'get' func
-    - (Line 83) change decorator to 'admins_or_task_deployers_only' for 'get' func
-
-- `api/v1/statistics/submissions.py`:
-    - (Line 6) import decorator 'admins_or_task_deployers_only'
-    - (Line 11) change decorator to 'admins_or_task_deployers_only' for 'get' func
+    <ul>
+        <li>
+            models/__init__.py:
+            <ul>
+                <li>(Line 374) add 'TaskDeployers' class</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            utils/user/__init__.py:
+            <ul>
+                <li>(Line 38) add 'is_task_deployer' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            decorators/__init__.py:
+            <ul>
+                <li>(Line 22) add assert 'is_task_deployer' in 'during_ctf_time_only_wrapper' func</li>
+                <li>(Line 64) add assert 'is_task_deployer' in '_require_verified_emails' func</li>
+                <li>(Line 120) add decorator 'admins_or_task_deployers_only'</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            admin/__init__.py:
+            <ul>
+                <li>(Line 37) import func 'is_task_deployer'</li>
+                <li>(Line 53) add assert 'is_task_deployer' in 'view' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            admin/challenges.py:
+            <ul>
+                <li>(Line 11) import decorator 'admins_or_task_deployers_only'
+                    <li>(Line 16) change decorator to 'admins_or_task_deployers_only' for 'challenges_listing' func</li>
+                    <li>(Line 24) change decorator to 'admins_or_task_deployers_only' for 'challenges_detail' func</li>
+                    <li>(Line 63) change decorator to 'admins_or_task_deployers_only' for 'challenges_new' func</li>
+            </ul>
+         </li>
+        <br/>
+        <li>
+            admin/notifications.py:
+            <ul>
+                <li>(Line 5) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 10) change decorator to 'admins_or_task_deployers_only' for 'notifications' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            admin/scoreboard.py:
+            <ul>
+                <li>(Line 5) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 10) change decorator to 'admins_or_task_deployers_only' for 'scoreboard_listing' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            admin/statistics.py:
+            <ul>
+                <li>(Line 5) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 12) change decorator to 'admins_or_task_deployers_only' for 'statistics' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            admin/submissions.py:
+            <ul>
+                <li>(Line 5) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 12) change decorator to 'admins_or_task_deployers_only' for 'submissions_listing' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            api/v1/challenges.py:
+            <ul>
+                <li>(Line 24) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 34) import func 'is_task_deployer'</li>
+                <li>(Line 68) add assert 'is_task_deployer' in 'get' func</li>
+                <li>(Line 121) change decorator to 'admins_or_task_deployers_only' for 'post' func</li>
+                <li>(Line 134) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 156) add assert 'is_task_deployer' in 'get' func</li>
+                <li>(Line 183) add assert 'is_task_deployer' in 'get' func</li>
+                <li>(Line 215) add assert 'is_task_deployer' in 'get' func</li>
+                <li>(Line 263) add assert 'is_task_deployer' in 'get' func</li>
+                <li>(Line 279) change decorator to 'admins_or_task_deployers_only' for 'patch' func</li>
+                <li>(Line 288) change decorator to 'admins_or_task_deployers_only' for 'delete' func</li>
+                <li>(Line 313) add assert 'is_task_deployer' in 'post' func</li>
+                <li>(Line 424) add assert 'is_task_deployer' in 'post' func</li>
+                <li>(Line 442) add assert 'is_task_deployer' in 'post' func</li>
+                <li>(Line 511) add assert 'is_task_deployer' in 'get' func</li>
+                <li>(Line 530) add assert 'is_task_deployer' in 'get' func</li>
+                <li>(Line 551) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 568) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 585) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 601) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            api/v1/files.py:
+            <ul>
+                <li>(Line 7) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 15) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 28) change decorator to 'admins_or_task_deployers_only' for 'post' func</li>
+                <li>(Line 52) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 64) change decorator to 'admins_or_task_deployers_only' for 'delete' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            api/v1/flags.py:
+            <ul>
+                <li>(Line 7) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 15) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 26) change decorator to 'admins_or_task_deployers_only' for 'post' func</li>
+                <li>(Line 48) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 68) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 82) change decorator to 'admins_or_task_deployers_only' for 'delete' func</li>
+                <li>(Line 93) change decorator to 'admins_or_task_deployers_only' for 'patch' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            api/v1/hints.py:
+            <ul>
+                <li>(Line 6) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 7) import func 'is_task_deployer'</li>
+                <li>(Line 15) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 26) change decorator to 'admins_or_task_deployers_only' for 'post' func</li>
+                <li>(Line 60) add assert 'is_task_deployer' in 'get' func</li>
+                <li>(Line 72) change decorator to 'admins_or_task_deployers_only' for 'patch' func</li>
+                <li>(Line 91) change decorator to 'admins_or_task_deployers_only' for 'delete' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            api/v1/notifications.py:
+            <ul>
+                <li>(Line 6) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 24) change decorator to 'admins_or_task_deployers_only' for 'post' func</li>
+                <li>(Line 63) change decorator to 'admins_or_task_deployers_only' for 'delete' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            api/v1/submissions.py:
+            <ul>
+                <li>(Line 7) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 17) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 34) change decorator to 'admins_or_task_deployers_only' for 'post' func</li>
+                <li>(Line 59) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 71) change decorator to 'admins_or_task_deployers_only' for 'delete' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            api/v1/tags.py:
+            <ul>
+                <li>(Line 6) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 14) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 27) change decorator to 'admins_or_task_deployers_only' for 'post' func</li>
+                <li>(Line 49) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 61) change decorator to 'admins_or_task_deployers_only' for 'patch' func</li>
+                <li>(Line 79) change decorator to 'admins_or_task_deployers_only' for 'delete' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            api/v1/tokens.py:
+            <ul>
+                <li>(Line 10) import func 'is_task_deployer'</li>
+                <li>(Line 58) add assert 'is_task_deployer' in 'get' func</li>
+                <li>(Line 76) add assert 'is_task_deployer' in 'delete' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            api/v1/unlocks.py:
+            <ul>
+                <li>(Line 10) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 23) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            api/v1/statistics/challenges.py:
+            <ul>
+                <li>(Line 7) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 14) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 32) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+                <li>(Line 83) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+            </ul>
+        </li>
+        <br/>
+        <li>
+            api/v1/statistics/submissions.py:
+            <ul>
+                <li>(Line 6) import decorator 'admins_or_task_deployers_only'</li>
+                <li>(Line 11) change decorator to 'admins_or_task_deployers_only' for 'get' func</li>
+            </ul>
+        </li>
+    </ul>
 </details>
 
 Остался лишь последний штрих - поправить html-шаблоны.
