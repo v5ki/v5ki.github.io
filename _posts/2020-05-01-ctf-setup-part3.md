@@ -313,3 +313,15 @@ class TaskDeployers(Users):
     <span class="badge badge-primary">task deployer</span>
 {% endif %}
 ```
+
+Как обычно перезагружаем сервер и контейнер, после чего можно взглянуть на результат.
+<p align="center">
+    <img src="/img/2020-05-01/ctf-setup-part3/users.png" width="500">
+    <br/>
+    <i>Список пользователей</i>
+</p>
+<p align="center">
+    <img src="/img/2020-05-01/ctf-setup-part3/new_user.png" width="500">
+    <br/>
+    <i>Добавление нового пользователя</i>
+</p>
