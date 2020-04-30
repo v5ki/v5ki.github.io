@@ -330,9 +330,10 @@ class TaskDeployers(Users):
 </p>
 
 Для начала добавим ограничение на доступные страницы, редактируем файл `CTFd/CTFd/themes/admin/templates/base.html`.  
-Прокручиваем до 48 строки и вставляем проверку типа пользователя ```{% i f type == 'admin' %}```:
+Прокручиваем до 48 строки и вставляем проверку типа пользователя ```<!-- prettier-ignore -->{% if type == 'admin' %}```:
 ```html
-{% i f type == 'admin' %}
+<!-- prettier-ignore -->
+{% if type == 'admin' %}
     <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Pages</a>
         <div class="dropdown-menu">
@@ -341,7 +342,7 @@ class TaskDeployers(Users):
         </div>
     </li>
     <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.users_listing') }}">Users</a></li>
-    {% i f get_config('user_mode') == 'teams' %}
+    {% if get_config('user_mode') == 'teams' %}
     <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.teams_listing') }}">Teams</a></li>
     {% endif %}
 {% endif %}
@@ -357,7 +358,7 @@ class TaskDeployers(Users):
             <a class="dropdown-item" href="{{ url_for('admin.submissions_listing', submission_type='incorrect') }}">Wrong Submissions</a>
         </div>
     </li>
-{% i f type == 'admin' %}
+{% if type == 'admin' %}
     <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.config') }}">Config</a></li>
 {% endif %}
 ```
@@ -366,7 +367,8 @@ class TaskDeployers(Users):
 Даём доступ (частичный) к админской панели - `CTFd/CTFd/themes/core/templates/base.html`, строка 85.
 Добавляем проверку ```or type == 'task_deployer'```:
 ```html
-{% i f type == 'admin' or type == 'task_deployer' %}
+<!-- prettier-ignore -->
+{% if type == 'admin' or type == 'task_deployer' %}
     <li class="nav-item">
         <a class="nav-link" href="{{ url_for('admin.view') }}">
             <span class="d-block" data-toggle="tooltip" data-placement="bottom" title="Admin Panel">
@@ -384,7 +386,8 @@ class TaskDeployers(Users):
 Изменения коснутся двух файлов - `CTFd/CTFd/themes/admin/templates/modals/users/create.html` и `CTFd/CTFd/themes/admin/templates/modals/users/edit.html`.
 В обоих файлах откатываемся на 45 строку и добавляем следующее:
 ```html
-<option value="task_deployer"{% i f user is defined and user.type == 'task_deployer' %} selected{% endif %}>
+<!-- prettier-ignore -->
+<option value="task_deployer"{% if user is defined and user.type == 'task_deployer' %} selected{% endif %}>
     Task Deployer
 </option>
 ```
@@ -392,7 +395,8 @@ class TaskDeployers(Users):
 И наконец-то последняя правка - добавляем `badge` для пользователей типа __TaskDeployer__.  
 Редактировать придётся тоже два файла - `CTFd/CTFd/themes/admin/templates/users/user.html` (62 строка), `CTFd/CTFd/themes/admin/templates/users/users.html` (114 строка):
 ```html
-{% i f user.type == 'task_deployer' %}
+<!-- prettier-ignore -->
+{% if user.type == 'task_deployer' %}
     <span class="badge badge-primary">task deployer</span>
 {% endif %}
 ```
