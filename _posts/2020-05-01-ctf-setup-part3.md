@@ -330,7 +330,7 @@ class TaskDeployers(Users):
 </p>
 
 Для начала добавим ограничение на доступные страницы, редактируем файл `CTFd/CTFd/themes/admin/templates/base.html`.  
-Прокручиваем до 48 строки и вставляем проверку типа пользователя `{% if type == 'admin' %}`:
+Прокручиваем до 48 строки и вставляем проверку типа пользователя ```{% if type == 'admin' %}```:
 ```html
 {% if type == 'admin' %}
     <li class="nav-item dropdown">
@@ -364,7 +364,7 @@ class TaskDeployers(Users):
 Тем самым мы отстранили деплоеров от доступа к пользовательским данным и панели управления бордой.
 
 Даём доступ (частичный) к админской панели - `CTFd/CTFd/themes/core/templates/base.html`, строка 85.
-Добавляем проверку `or type == 'task_deployer'`:
+Добавляем проверку ```or type == 'task_deployer'```:
 ```html
 {% if type == 'admin' or type == 'task_deployer' %}
     <li class="nav-item">
