@@ -336,29 +336,29 @@ class TaskDeployers(Users):
     <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Pages</a>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ url_for('admin.pages_listing') }}">All Pages</a>
-            <a class="dropdown-item" href="{{ url_for('admin.pages_new') }}">New Page</a>
+            <a class="dropdown-item" href="{ { url_for('admin.pages_listing') } }">All Pages</a>
+            <a class="dropdown-item" href="{ { url_for('admin.pages_new') } }">New Page</a>
         </div>
     </li>
-    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.users_listing') }}">Users</a></li>
+    <li class="nav-item"><a class="nav-link" href="{ { url_for('admin.users_listing') } }">Users</a></li>
     { % if get_config('user_mode') == 'teams' % }
-    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.teams_listing') }}">Teams</a></li>
+    <li class="nav-item"><a class="nav-link" href="{ { url_for('admin.teams_listing') } }">Teams</a></li>
     { % endif % }
 { % endif % }
 
-    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.scoreboard_listing') }}">Scoreboard</a></li>
-    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.challenges_listing') }}">Challenges</a></li>
+    <li class="nav-item"><a class="nav-link" href="{ { url_for('admin.scoreboard_listing') } }">Scoreboard</a></li>
+    <li class="nav-item"><a class="nav-link" href="{ { url_for('admin.challenges_listing') } }">Challenges</a></li>
     <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
         aria-haspopup="true" aria-expanded="true">Submissions</a>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ url_for('admin.submissions_listing') }}">All Submissions</a>
-            <a class="dropdown-item" href="{{ url_for('admin.submissions_listing', submission_type='correct') }}">Correct Submissions</a>
-            <a class="dropdown-item" href="{{ url_for('admin.submissions_listing', submission_type='incorrect') }}">Wrong Submissions</a>
+            <a class="dropdown-item" href="{ { url_for('admin.submissions_listing') } }">All Submissions</a>
+            <a class="dropdown-item" href="{ { url_for('admin.submissions_listing', submission_type='correct') } }">Correct Submissions</a>
+            <a class="dropdown-item" href="{ { url_for('admin.submissions_listing', submission_type='incorrect') } }">Wrong Submissions</a>
         </div>
     </li>
 { % if type == 'admin' % }
-    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.config') }}">Config</a></li>
+    <li class="nav-item"><a class="nav-link" href="{ { url_for('admin.config') } }">Config</a></li>
 { % endif % }
 ```
 Тем самым мы отстранили деплоеров от доступа к пользовательским данным и панели управления бордой.
