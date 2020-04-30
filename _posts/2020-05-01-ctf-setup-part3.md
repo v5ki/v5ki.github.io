@@ -364,7 +364,7 @@ class TaskDeployers(Users):
 Тем самым мы отстранили деплоеров от доступа к пользовательским данным и панели управления бордой.
 
 Даём доступ (частичный) к админской панели - `CTFd/CTFd/themes/core/templates/base.html`, строка 85.
-Добавляем проверку `or type == 'task_deployer'`:
+Добавляем проверку ```or type == 'task_deployer'```:
 ```html
 {% if type == 'admin' or type == 'task_deployer' %}
     <li class="nav-item">
