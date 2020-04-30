@@ -151,7 +151,7 @@ class TaskDeployers(Users):
         <li>
             admin/challenges.py:
             <ul>
-                <li>(Line 11) import decorator 'admins_or_task_deployers_only'
+                <li>(Line 11) import decorator 'admins_or_task_deployers_only'</li>
                     <li>(Line 16) change decorator to 'admins_or_task_deployers_only' for 'challenges_listing' func</li>
                     <li>(Line 24) change decorator to 'admins_or_task_deployers_only' for 'challenges_detail' func</li>
                     <li>(Line 63) change decorator to 'admins_or_task_deployers_only' for 'challenges_new' func</li>
