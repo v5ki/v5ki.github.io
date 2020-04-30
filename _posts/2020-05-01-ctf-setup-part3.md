@@ -330,7 +330,7 @@ class TaskDeployers(Users):
 </p>
 
 Для начала добавим ограничение на доступные страницы, редактируем файл `CTFd/CTFd/themes/admin/templates/base.html`.  
-Прокручиваем до 48 строки и вставляем проверку типа пользователя `{% if type == 'admin' %}`:
+Прокручиваем до 48 строки и вставляем проверку типа пользователя `{% type == 'admin' %}`:
 ```html
 {% if type == 'admin' %}
     <li class="nav-item dropdown">
